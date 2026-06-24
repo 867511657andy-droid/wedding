@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#8d1217" />
+  <title>韦文涛 & 唐秋桓 · 新中式婚礼请帖</title>
+  <style>
+    :root{
+      --red:#8d1217;
+      --red-deep:#5d080b;
+      --red-light:#bd2a25;
+      --gold:#d6aa58;
+      --gold-soft:#f3d88c;
+      --cream:#fff7e7;
+      --paper:#f8edcf;
+      --ink:#3f2619;
+      --muted:#7a5b42;
+      --shadow: 0 22px 60px rgba(57, 7, 8, .28);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-top: env(safe-area-inset-top, 0px);
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    html,body{height:100%;margin:0;overflow:hidden;background:#410509;color:var(--cream);font-family:"Songti SC","STSong","SimSun","Noto Serif SC",serif;}
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(246,211,128,.18), transparent 34%),
+        radial-gradient(circle at 90% 28%, rgba(246,211,128,.12), transparent 30%),
+        linear-gradient(120deg, rgba(255,255,255,.04), transparent 28%, rgba(255,255,255,.03) 55%, transparent 80%);
+      mix-blend-mode:screen;
+    }
+    #app{height:100%;width:100%;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth;position:relative;z-index:1;}
+    .page{position:relative;min-height:100svh;height:100svh;width:100%;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:calc(18px + var(--safe-top)) 18px calc(24px + var(--safe-bottom));isolation:isolate;}
+    .page:before{content:"";position:absolute;inset:0;z-index:-4;background:linear-gradient(165deg,var(--red) 0%,var(--red-deep) 68%,#3f0508 100%);} 
+    .paper-bg{position:absolute;inset:16px;border-radius:22px;z-index:-3;overflow:hidden;background:
+      radial-gradient(circle at 20% 18%, rgba(255,250,232,.18), transparent 24%),
+      radial-gradient(circle at 80% 74%, rgba(255,228,148,.12), transparent 30%),
+      linear-gradient(180deg, rgba(255,248,225,.10), rgba(255,248,225,.03));border:1px solid rgba(246,217,144,.38);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), var(--shadow);} 
+    .paper-bg:before{content:"";position:absolute;inset:-80px;opacity:.22;background-image:
+      repeating-linear-gradient(0deg, rgba(255,245,211,.15) 0 1px, transparent 1px 6px),
+      repeating-linear-gradient(90deg, rgba(83,25,15,.12) 0 1px, transparent 1px 8px);filter:blur(.15px);transform:rotate(-2deg) scale(1.08);} 
+    .paper-bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle, transparent 0 1px, rgba(255,246,221,.09) 1px 1.5px, transparent 1.6px) 0 0/18px 18px;opacity:.6;}
+    .content{width:min(390px,100%);height:100%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 20px;z-index:1;}
+    .ornament{position:absolute;pointer-events:none;opacity:.8;z-index:-1;}
+    .cloud{width:170px;height:90px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.06));}
+    .cloud.top-left{top:38px;left:-22px;animation:floatCloud 9s ease-in-out infinite;}
+    .cloud.bottom-right{right:-34px;bottom:68px;transform:scaleX(-1);animation:floatCloud 10s ease-in-out infinite reverse;}
+    .plum{position:absolute;width:118px;height:158px;right:-12px;top:74px;opacity:.78;}
+    .plum.left{left:-18px;right:auto;top:auto;bottom:84px;transform:scaleX(-1) rotate(-7deg);opacity:.55;}
+    .mountain{position:absolute;left:0;right:0;bottom:0;width:100%;height:35%;opacity:.34;z-index:-2;}
+    .knot{width:54px;height:54px;margin:0 auto 12px;opacity:.95;}
+    .small-title{letter-spacing:.38em;color:var(--gold-soft);font-size:13px;text-transform:uppercase;margin:0 0 12px;text-shadow:0 1px 1px rgba(0,0,0,.25);}
+    .gold-line{height:1px;width:132px;background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);margin:12px auto 18px;position:relative;}
+    .gold-line:before,.gold-line:after{content:"";position:absolute;top:-3px;width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg);background:rgba(214,170,88,.2);} 
+    .gold-line:before{left:58px}.gold-line:after{right:58px}
+    .names{font-size:33px;letter-spacing:.08em;line-height:1.48;font-weight:600;color:#fff4cd;text-shadow:0 2px 0 rgba(75,0,0,.22),0 8px 24px rgba(0,0,0,.18);} 
+    .amp{display:block;font-size:20px;letter-spacing:.16em;color:var(--gold);font-weight:400;margin:2px 0;}
+    .date-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(246,217,144,.62);border-radius:999px;padding:9px 18px;margin-top:16px;color:#fff4cf;background:linear-gradient(120deg,rgba(245,213,132,.18),rgba(255,255,255,.04));box-shadow:0 10px 30px rgba(0,0,0,.14);font-size:15px;letter-spacing:.12em;}
+    .date-pill:before,.date-pill:after{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(244,211,128,.7);} 
+    .hero-xi{position:relative;width:min(265px,76vw);aspect-ratio:1/1;margin:10px auto 10px;display:grid;place-items:center;}
+    .hero-xi:before{content:"";position:absolute;inset:5%;border:1px solid rgba(246,217,144,.65);transform:rotate(45deg);background:linear-gradient(135deg,rgba(255,238,174,.11),rgba(255,255,255,.02));box-shadow:inset 0 0 24px rgba(255,233,164,.16), 0 18px 50px rgba(0,0,0,.18);animation:diamondOpen 1.15s ease both;}
+    .hero-xi:after{content:"";position:absolute;inset:14%;border:1px solid rgba(246,217,144,.25);transform:rotate(45deg);} 
+    .xi-char{font-family:"STKaiti","KaiTi","Kaiti SC","Songti SC",serif;font-size:116px;font-weight:700;line-height:1;color:#f6d888;text-shadow:0 2px 0 #fff0b2,0 12px 32px rgba(0,0,0,.38);position:relative;z-index:1;animation:inkBloom .95s .15s ease both;} 
+    .cover-seal{font-family:"STKaiti","KaiTi",serif;position:absolute;right:31px;bottom:14px;width:47px;height:47px;border:1px solid rgba(255,238,177,.8);color:#ffe7a6;display:grid;place-items:center;font-size:14px;line-height:1.1;background:rgba(111,7,9,.26);transform:rotate(-7deg);}
+    .hint{position:absolute;bottom:calc(14px + var(--safe-bottom));left:50%;transform:translateX(-50%);font-size:12px;color:rgba(255,239,202,.72);letter-spacing:.18em;animation:upDown 1.6s ease-in-out infinite;white-space:nowrap;}
+    .hint:after{content:"⌄";display:block;font-size:18px;line-height:1;margin-top:1px;color:var(--gold-soft);}
+    .scroll-card{position:relative;width:100%;border-radius:18px;padding:26px 20px 24px;background:linear-gradient(180deg,rgba(255,248,228,.94),rgba(248,232,190,.92));color:var(--ink);box-shadow:0 18px 45px rgba(49,0,0,.26);border:1px solid rgba(255,230,159,.85);overflow:hidden;transform-origin:top center;}
+    .scroll-card:before,.scroll-card:after{content:"";position:absolute;left:12px;right:12px;height:14px;border-radius:99px;background:linear-gradient(90deg,#8d571f,#e0b45f,#8d571f);box-shadow:0 3px 8px rgba(79,25,0,.22);}
+    .scroll-card:before{top:9px}.scroll-card:after{bottom:9px}
+    .page.active .scroll-card{animation:scrollUnfold .72s cubic-bezier(.22,.8,.23,1) both;}
+    .section-title{font-family:"STKaiti","KaiTi","Kaiti SC",serif;font-size:38px;letter-spacing:.12em;color:#851116;margin:18px 0 4px;line-height:1.1;}
+    .section-sub{font-size:13px;letter-spacing:.22em;color:#9b6c39;margin-bottom:10px;text-transform:uppercase;}
+    .intro{font-size:15px;line-height:1.9;color:#5b3827;margin:10px auto 14px;}
+    .timeline{width:100%;margin:14px auto 6px;position:relative;padding:4px 0;}
+    .timeline:before{content:"";position:absolute;left:50%;top:9px;bottom:9px;width:1px;background:linear-gradient(180deg,transparent,#c79a4a,transparent);} 
+    .time-row{display:grid;grid-template-columns:1fr 30px 1fr;align-items:center;gap:8px;margin:15px 0;text-align:left;}
+    .time-row:nth-child(even){text-align:right;}
+    .time{font-size:17px;color:#891014;font-weight:700;letter-spacing:.04em;}
+    .dot{width:24px;height:24px;border-radius:50%;border:1px solid #c49443;background:#fff2cc;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(198,148,67,.12);}
+    .dot:before{content:"";width:8px;height:8px;border-radius:50%;background:#b11c1e;}
+    .item{font-size:15px;color:#4e3323;line-height:1.45;}
+    .date-block{margin:12px auto 6px;padding:14px 10px;border-top:1px solid rgba(177,117,41,.28);border-bottom:1px solid rgba(177,117,41,.28);}
+    .big-date{font-size:28px;color:#851116;font-weight:700;letter-spacing:.06em;}
+    .lunar{font-size:13px;color:#8c6744;margin-top:6px;letter-spacing:.1em;}
+    .invite-card{width:100%;background:rgba(255,251,239,.74);border:1px solid rgba(191,145,68,.34);border-radius:16px;padding:14px 12px;margin-top:10px;text-align:left;}
+    .addr-title{font-size:20px;color:#851116;font-weight:700;text-align:center;margin:4px 0 10px;letter-spacing:.06em;line-height:1.45;}
+    .addr-title span{display:inline-block;margin-top:2px;letter-spacing:.18em;}
+    .addr-line{display:flex;align-items:flex-start;gap:8px;color:#4e3323;font-size:14px;line-height:1.6;margin:5px 0;}
+    .addr-line .icon{color:#ad7a31;width:20px;text-align:center;flex:0 0 20px;}
+    .tip{font-size:12px;color:#7b5437;background:rgba(208,169,91,.15);border:1px dashed rgba(173,122,49,.42);border-radius:12px;padding:9px 10px;line-height:1.55;text-align:center;margin-top:12px;}
+    .map-btn{display:block;text-decoration:none;color:#fff7df;background:linear-gradient(135deg,#8d1217,#b72222);border:1px solid rgba(246,216,140,.62);border-radius:999px;padding:11px 14px;text-align:center;font-size:14px;letter-spacing:.12em;margin-top:10px;box-shadow:0 8px 18px rgba(113,16,18,.18);}
+    form{width:100%;margin-top:10px;text-align:left;}
+    label{display:block;color:#6a4630;font-size:13px;margin:10px 0 6px;letter-spacing:.08em;}
+    input,select,textarea{width:100%;border:1px solid rgba(174,126,49,.36);outline:none;border-radius:13px;background:rgba(255,253,246,.85);padding:12px 12px;font-family:inherit;color:#43291d;font-size:15px;box-shadow:inset 0 1px 3px rgba(100,54,8,.06);} 
+    textarea{min-height:82px;resize:none;line-height:1.55;}
+    input:focus,select:focus,textarea:focus{border-color:#a51d20;box-shadow:0 0 0 3px rgba(165,29,32,.10), inset 0 1px 3px rgba(100,54,8,.06);} 
+    .submit-btn{width:100%;border:0;border-radius:999px;margin-top:14px;padding:13px 14px;background:linear-gradient(135deg,#8d1217,#be2525 52%,#8d1217);color:#fff8de;font-family:inherit;font-size:16px;letter-spacing:.18em;box-shadow:0 12px 28px rgba(132,15,19,.26);cursor:pointer;}
+    .submit-btn:disabled{opacity:.68;cursor:not-allowed;}
+    .status{margin-top:10px;font-size:13px;line-height:1.6;text-align:center;color:#7b5437;min-height:22px;}
+    .ending{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;}
+    .ending-phrase{font-family:"STKaiti","KaiTi","Kaiti SC",serif;color:#fff1be;font-size:34px;letter-spacing:.16em;line-height:1.75;text-shadow:0 10px 28px rgba(0,0,0,.3);margin:18px 0 10px;}
+    .ending-text{font-size:15px;line-height:2;color:#f7ddb0;letter-spacing:.12em;max-width:300px;}
+    .seal-row{display:flex;gap:14px;margin:22px 0 4px;justify-content:center;}
+    .seal{width:56px;height:56px;border:1px solid rgba(255,232,164,.74);color:#ffe2a0;display:grid;place-items:center;font-family:"STKaiti","KaiTi",serif;font-size:16px;background:rgba(122,6,8,.38);box-shadow:inset 0 0 0 3px rgba(255,232,164,.07);}
+    .footer-date{font-size:13px;color:rgba(255,238,190,.83);letter-spacing:.18em;margin-top:14px;}
+    .pager{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:9px;}
+    .pager button{width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,226,166,.76);background:rgba(255,255,255,.12);padding:0;cursor:pointer;transition:.25s;}
+    .pager button.on{height:23px;border-radius:99px;background:var(--gold-soft);box-shadow:0 0 12px rgba(255,222,154,.7);} 
+    .music-tip{position:fixed;top:calc(13px + var(--safe-top));right:13px;z-index:30;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,224,154,.58);background:rgba(86,8,11,.38);color:#ffe5a5;font-size:16px;backdrop-filter:blur(8px);}
+    .page .reveal{opacity:0;transform:translateY(18px);filter:blur(4px);transition:opacity .65s ease,transform .65s ease,filter .65s ease;}
+    .page.active .reveal{opacity:1;transform:none;filter:blur(0);} 
+    .page.active .delay-1{transition-delay:.12s}.page.active .delay-2{transition-delay:.24s}.page.active .delay-3{transition-delay:.36s}.page.active .delay-4{transition-delay:.48s}
+    .ink-wash{position:absolute;inset:-30px;z-index:-2;pointer-events:none;opacity:.3;background:
+      radial-gradient(circle at 18% 20%, rgba(255,240,189,.32), transparent 18%),
+      radial-gradient(circle at 74% 13%, rgba(255,236,173,.22), transparent 20%),
+      radial-gradient(circle at 64% 80%, rgba(0,0,0,.28), transparent 24%);filter:blur(12px);transform:scale(.98);}
+    .page.active .ink-wash{animation:inkDrift 5.6s ease-in-out infinite alternate;}
+    .pattern-top,.pattern-bottom{position:absolute;left:22px;right:22px;height:24px;opacity:.34;background:
+      linear-gradient(90deg, transparent 0 8px, rgba(246,218,145,.85) 8px 10px, transparent 10px 18px) 0 0/18px 100%,
+      linear-gradient(90deg, rgba(246,218,145,.5), rgba(246,218,145,.1), rgba(246,218,145,.5));}
+    .pattern-top{top:24px}.pattern-bottom{bottom:24px;transform:scaleY(-1)}
+    @keyframes floatCloud{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(12px,-8px,0)}}
+    @keyframes upDown{0%,100%{transform:translate(-50%,0);opacity:.72}50%{transform:translate(-50%,-7px);opacity:1}}
+    @keyframes diamondOpen{0%{opacity:0;transform:rotate(45deg) scale(.72)}100%{opacity:1;transform:rotate(45deg) scale(1)}}
+    @keyframes inkBloom{0%{opacity:0;filter:blur(14px);transform:scale(.88)}70%{filter:blur(1px)}100%{opacity:1;filter:blur(0);transform:scale(1)}}
+    @keyframes scrollUnfold{0%{opacity:.1;transform:scaleY(.05) translateY(-8px);filter:blur(6px)}100%{opacity:1;transform:scaleY(1) translateY(0);filter:blur(0)}}
+    @keyframes inkDrift{0%{transform:translate(-6px,-4px) scale(.98)}100%{transform:translate(8px,7px) scale(1.04)}}
+    @media (max-height:720px){.content{padding:18px 18px}.hero-xi{width:min(220px,66vw)}.xi-char{font-size:94px}.section-title{font-size:32px}.scroll-card{padding:20px 18px}.timeline .time-row{margin:10px 0}.ending-phrase{font-size:30px;line-height:1.55}.names{font-size:29px}}
+    @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.page .reveal{opacity:1;transform:none;filter:none}}
+  </style>
+</head>
+<body>
+  <div class="music-tip" title="良辰吉日">囍</div>
+  <nav class="pager" aria-label="页面导航">
+    <button class="on" aria-label="第1页"></button><button aria-label="第2页"></button><button aria-label="第3页"></button><button aria-label="第4页"></button><button aria-label="第5页"></button>
+  </nav>
+
+  <main id="app">
+    <!-- 1. 封面 -->
+    <section class="page active" data-title="封面">
+      <div class="paper-bg"></div><div class="ink-wash"></div><div class="pattern-top"></div><div class="pattern-bottom"></div>
+      <svg class="ornament cloud top-left" viewBox="0 0 220 100" aria-hidden="true"><path d="M20 62c24 0 22-25 45-25 21 0 22 18 39 18 18 0 16-32 49-32 28 0 35 26 45 39" fill="none" stroke="#f5d88c" stroke-width="3" stroke-linecap="round"/><path d="M40 76h122c26 0 27-28 55-28" fill="none" stroke="#f5d88c" stroke-width="2" stroke-linecap="round" opacity=".75"/></svg>
+      <svg class="ornament cloud bottom-right" viewBox="0 0 220 100" aria-hidden="true"><path d="M20 62c24 0 22-25 45-25 21 0 22 18 39 18 18 0 16-32 49-32 28 0 35 26 45 39" fill="none" stroke="#f5d88c" stroke-width="3" stroke-linecap="round"/><path d="M40 76h122c26 0 27-28 55-28" fill="none" stroke="#f5d88c" stroke-width="2" stroke-linecap="round" opacity=".75"/></svg>
+      <svg class="ornament plum" viewBox="0 0 140 190" aria-hidden="true"><path d="M106 7c-6 48-21 79-62 114-17 15-24 29-27 57" fill="none" stroke="#5c1a13" stroke-width="5" stroke-linecap="round"/><path d="M88 54c21-4 32-16 41-34M65 91c20 1 36-7 51-24M45 121c-11-14-14-29-13-50" fill="none" stroke="#5c1a13" stroke-width="3" stroke-linecap="round"/><g fill="#f3c5b4" stroke="#d6aa58" stroke-width="1"><circle cx="111" cy="25" r="8"/><circle cx="122" cy="62" r="7"/><circle cx="76" cy="83" r="7"/><circle cx="34" cy="76" r="7"/><circle cx="39" cy="130" r="8"/></g></svg>
+      <svg class="mountain" viewBox="0 0 430 280" preserveAspectRatio="none" aria-hidden="true"><path d="M0 220C45 158 82 140 130 178c32 25 64 16 96-23 48-58 90-74 137 3 22 36 45 45 67 45v77H0z" fill="#190f0e" opacity=".42"/><path d="M0 240c57-37 92-49 138-22 43 25 88 22 136-12 57-41 101-37 156 14v60H0z" fill="#24110f" opacity=".3"/></svg>
+      <div class="content">
+        <p class="small-title reveal">WEDDING INVITATION</p>
+        <div class="hero-xi reveal delay-1"><div class="xi-char">囍</div><div class="cover-seal">良辰<br>吉日</div></div>
+        <div class="names reveal delay-2">韦文涛<span class="amp">&</span>唐秋桓</div>
+        <div class="gold-line reveal delay-3"></div>
+        <div class="date-pill reveal delay-4">2026年9月26日</div>
+      </div>
+      <div class="hint">上滑开启请帖</div>
+    </section>
+
+    <!-- 2. 佳期 -->
+    <section class="page" data-title="佳期">
+      <div class="paper-bg"></div><div class="ink-wash"></div><div class="pattern-top"></div><div class="pattern-bottom"></div>
+      <svg class="ornament cloud top-left" viewBox="0 0 220 100" aria-hidden="true"><path d="M20 62c24 0 22-25 45-25 21 0 22 18 39 18 18 0 16-32 49-32 28 0 35 26 45 39" fill="none" stroke="#f5d88c" stroke-width="3" stroke-linecap="round"/><path d="M40 76h122c26 0 27-28 55-28" fill="none" stroke="#f5d88c" stroke-width="2" stroke-linecap="round" opacity=".75"/></svg>
+      <svg class="ornament plum left" viewBox="0 0 140 190" aria-hidden="true"><path d="M106 7c-6 48-21 79-62 114-17 15-24 29-27 57" fill="none" stroke="#5c1a13" stroke-width="5" stroke-linecap="round"/><path d="M88 54c21-4 32-16 41-34M65 91c20 1 36-7 51-24M45 121c-11-14-14-29-13-50" fill="none" stroke="#5c1a13" stroke-width="3" stroke-linecap="round"/><g fill="#f3c5b4" stroke="#d6aa58" stroke-width="1"><circle cx="111" cy="25" r="8"/><circle cx="122" cy="62" r="7"/><circle cx="76" cy="83" r="7"/><circle cx="34" cy="76" r="7"/><circle cx="39" cy="130" r="8"/></g></svg>
+      <div class="content">
+        <div class="scroll-card reveal">
+          <svg class="knot" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 10c12 12 18 18 18 30S52 58 40 70C28 58 22 52 22 40s6-18 18-30Z" fill="none" stroke="#a0161a" stroke-width="3"/><path d="M22 40h36M40 10v60M27 23l26 34M53 23 27 57" stroke="#d6aa58" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <div class="section-title">佳期</div>
+          <div class="section-sub">Auspicious Day</div>
+          <div class="date-block">
+            <div class="big-date">2026 · 09 · 26</div>
+            <div class="lunar">星期六　中午十二时设宴</div>
+          </div>
+          <p class="intro">诚邀亲友莅临，共赴良辰，见证新郎韦文涛与新娘唐秋桓缔结美满姻缘。</p>
+          <div class="timeline" aria-label="婚礼流程">
+            <div class="time-row"><div><div class="time">11:30</div></div><div class="dot"></div><div class="item">宾客签到<br>合影留念</div></div>
+            <div class="time-row"><div class="item">迎宾入席<br>茶叙寒暄</div><div class="dot"></div><div><div class="time">11:50</div></div></div>
+            <div class="time-row"><div><div class="time">12:00</div></div><div class="dot"></div><div class="item">婚宴开席<br>共饮喜酒</div></div>
+            <div class="time-row"><div class="item">新人敬酒<br>共享喜悦</div><div class="dot"></div><div><div class="time">12:30</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 敬邀 -->
+    <section class="page" data-title="敬邀">
+      <div class="paper-bg"></div><div class="ink-wash"></div><div class="pattern-top"></div><div class="pattern-bottom"></div>
+      <svg class="ornament cloud bottom-right" viewBox="0 0 220 100" aria-hidden="true"><path d="M20 62c24 0 22-25 45-25 21 0 22 18 39 18 18 0 16-32 49-32 28 0 35 26 45 39" fill="none" stroke="#f5d88c" stroke-width="3" stroke-linecap="round"/><path d="M40 76h122c26 0 27-28 55-28" fill="none" stroke="#f5d88c" stroke-width="2" stroke-linecap="round" opacity=".75"/></svg>
+      <div class="content">
+        <div class="scroll-card reveal">
+          <div class="section-title">敬邀</div>
+          <div class="section-sub">Location</div>
+          <div class="invite-card">
+            <div class="addr-title">防城港港宸国际大酒店 ·<br><span>金花茶厅</span></div>
+            <div class="addr-line"><span class="icon">时</span><span>2026年9月26日　中午12:00设宴</span></div>
+            <div class="addr-line"><span class="icon">址</span><span>防城港市港口区北部湾港大道1号</span></div>
+            <div class="tip">酒店可免费停车，请向前台索取停车码。</div>
+            <a class="map-btn" target="_blank" rel="noopener" href="https://j.map.baidu.com/74/jKrM">打开地图导航</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 回执 -->
+    <section class="page" data-title="回执">
+      <div class="paper-bg"></div><div class="ink-wash"></div><div class="pattern-top"></div><div class="pattern-bottom"></div>
+      <svg class="ornament plum" viewBox="0 0 140 190" aria-hidden="true"><path d="M106 7c-6 48-21 79-62 114-17 15-24 29-27 57" fill="none" stroke="#5c1a13" stroke-width="5" stroke-linecap="round"/><path d="M88 54c21-4 32-16 41-34M65 91c20 1 36-7 51-24M45 121c-11-14-14-29-13-50" fill="none" stroke="#5c1a13" stroke-width="3" stroke-linecap="round"/><g fill="#f3c5b4" stroke="#d6aa58" stroke-width="1"><circle cx="111" cy="25" r="8"/><circle cx="122" cy="62" r="7"/><circle cx="76" cy="83" r="7"/><circle cx="34" cy="76" r="7"/><circle cx="39" cy="130" r="8"/></g></svg>
+      <div class="content">
+        <div class="scroll-card reveal">
+          <div class="section-title">回执</div>
+          <div class="section-sub">RSVP</div>
+          <p class="intro">烦请留下赴宴信息与祝福，我们将提前为您做好准备。</p>
+          <form id="rsvpForm">
+            <label for="guestName">宾客姓名</label>
+            <input id="guestName" name="guestName" type="text" autocomplete="name" placeholder="请输入您的姓名" required />
+            <label for="guestCount">赴宴人数</label>
+            <select id="guestCount" name="guestCount" required>
+              <option value="1人">1人</option><option value="2人">2人</option><option value="3人">3人</option><option value="4人">4人</option><option value="5人及以上">5人及以上</option><option value="暂不确定">暂不确定</option>
+            </select>
+            <label for="blessing">祝福语</label>
+            <textarea id="blessing" name="blessing" placeholder="写下您对新人的祝福"></textarea>
+            <button class="submit-btn" id="submitBtn" type="submit">提交回执</button>
+            <div class="status" id="status" aria-live="polite"></div>
+          </form>
+          <form id="fallbackForm" action="https://www.pushplus.plus/send" method="post" target="pushplusFrame" style="display:none">
+            <input type="hidden" name="token" value="bf50d6ff7112411bbb9e8dd398c1e181" />
+            <input type="hidden" name="title" value="婚礼请帖回执" />
+            <input type="hidden" name="template" value="html" />
+            <input type="hidden" id="fallbackContent" name="content" value="" />
+          </form>
+          <iframe name="pushplusFrame" title="pushplus" style="display:none"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 封底 -->
+    <section class="page" data-title="封底">
+      <div class="paper-bg"></div><div class="ink-wash"></div><div class="pattern-top"></div><div class="pattern-bottom"></div>
+      <svg class="ornament cloud top-left" viewBox="0 0 220 100" aria-hidden="true"><path d="M20 62c24 0 22-25 45-25 21 0 22 18 39 18 18 0 16-32 49-32 28 0 35 26 45 39" fill="none" stroke="#f5d88c" stroke-width="3" stroke-linecap="round"/><path d="M40 76h122c26 0 27-28 55-28" fill="none" stroke="#f5d88c" stroke-width="2" stroke-linecap="round" opacity=".75"/></svg>
+      <svg class="mountain" viewBox="0 0 430 280" preserveAspectRatio="none" aria-hidden="true"><path d="M0 220C45 158 82 140 130 178c32 25 64 16 96-23 48-58 90-74 137 3 22 36 45 45 67 45v77H0z" fill="#190f0e" opacity=".44"/><path d="M0 240c57-37 92-49 138-22 43 25 88 22 136-12 57-41 101-37 156 14v60H0z" fill="#24110f" opacity=".32"/></svg>
+      <div class="content ending">
+        <p class="small-title reveal">WE LOOK FORWARD TO YOU</p>
+        <div class="hero-xi reveal delay-1" style="width:min(210px,62vw)"><div class="xi-char" style="font-size:92px">囍</div></div>
+        <div class="ending-phrase reveal delay-2">恭候光临<br>静候佳客</div>
+        <div class="gold-line reveal delay-3"></div>
+        <div class="ending-text reveal delay-3">一纸婚书，三生盟约。<br>愿与诸位亲友同饮喜酒，共贺良辰。</div>
+        <div class="seal-row reveal delay-4"><div class="seal">韦<br>唐</div><div class="seal">百年<br>好合</div></div>
+        <div class="footer-date reveal delay-4">韦文涛 & 唐秋桓 敬邀</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const app = document.getElementById('app');
+      const pages = Array.from(document.querySelectorAll('.page'));
+      const dots = Array.from(document.querySelectorAll('.pager button'));
+      const form = document.getElementById('rsvpForm');
+      const statusEl = document.getElementById('status');
+      const submitBtn = document.getElementById('submitBtn');
+      const TOKEN = 'bf50d6ff7112411bbb9e8dd398c1e181';
+
+      function setActive(index){
+        pages.forEach((p,i)=>p.classList.toggle('active', i===index));
+        dots.forEach((d,i)=>d.classList.toggle('on', i===index));
+      }
+
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const index = pages.indexOf(entry.target);
+            if(index >= 0) setActive(index);
+          }
+        });
+      }, {root: app, threshold: .58});
+      pages.forEach(p=>io.observe(p));
+      dots.forEach((dot,i)=>dot.addEventListener('click',()=>pages[i].scrollIntoView({behavior:'smooth'})));
+
+      let startY = 0;
+      app.addEventListener('touchstart', e => startY = e.touches[0].clientY, {passive:true});
+      app.addEventListener('touchend', e => {
+        const endY = e.changedTouches[0].clientY;
+        const diff = startY - endY;
+        if(Math.abs(diff) < 38) return;
+        const current = pages.findIndex(p => p.classList.contains('active'));
+        const next = Math.max(0, Math.min(pages.length - 1, current + (diff > 0 ? 1 : -1)));
+        pages[next].scrollIntoView({behavior:'smooth'});
+      }, {passive:true});
+
+      function esc(str){
+        return String(str || '').replace(/[&<>'"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[s]));
+      }
+      function buildContent(data){
+        const now = new Date();
+        return `
+          <div style="font-family:serif;line-height:1.8;color:#333">
+            <h2 style="color:#8d1217;margin:0 0 8px">婚礼请帖回执</h2>
+            <p><strong>新人：</strong>韦文涛 & 唐秋桓</p>
+            <p><strong>婚期：</strong>2026年9月26日 中午12:00</p>
+            <p><strong>宾客姓名：</strong>${esc(data.name)}</p>
+            <p><strong>赴宴人数：</strong>${esc(data.count)}</p>
+            <p><strong>祝福语：</strong>${esc(data.blessing || '无')}</p>
+            <p><strong>提交时间：</strong>${now.toLocaleString('zh-CN', {hour12:false})}</p>
+          </div>`;
+      }
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const data = {
+          name: document.getElementById('guestName').value.trim(),
+          count: document.getElementById('guestCount').value,
+          blessing: document.getElementById('blessing').value.trim()
+        };
+        if(!data.name){
+          statusEl.textContent = '请先填写宾客姓名。';
+          return;
+        }
+        const content = buildContent(data);
+        submitBtn.disabled = true;
+        submitBtn.textContent = '提交中...';
+        statusEl.textContent = '正在发送回执，请稍候。';
+
+        try{
+          const res = await fetch('https://www.pushplus.plus/send', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({token:TOKEN, title:'婚礼请帖回执', content, template:'html'})
+          });
+          let json = {};
+          try{ json = await res.json(); }catch(_){ }
+          if(res.ok && (json.code === 200 || json.code === '200' || json.code === undefined)){
+            statusEl.textContent = '回执已提交，感谢您的祝福！';
+            form.reset();
+          }else{
+            throw new Error(json.msg || json.message || '接口返回异常');
+          }
+        }catch(err){
+          // 部分静态网页托管环境可能受 CORS 限制，使用表单方式补发一次。
+          try{
+            document.getElementById('fallbackContent').value = content;
+            document.getElementById('fallbackForm').submit();
+            statusEl.textContent = '已尝试提交回执。如未收到推送，请检查 pushplus 开放接口或 token。';
+            form.reset();
+          }catch(_){
+            statusEl.textContent = '提交失败，请稍后再试，或联系新人登记。';
+          }
+        }finally{
+          submitBtn.disabled = false;
+          submitBtn.textContent = '提交回执';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

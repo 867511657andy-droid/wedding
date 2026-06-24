@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>韦文涛 & 唐秋桓 - 婚礼邀请函</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: "STSong", "SimSun", "宋体", serif;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .swiper-page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .swiper-page.active {
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 10;
+        }
+        .swiper-page.prev {
+            opacity: 0;
+            transform: translateY(-30%);
+            z-index: 5;
+        }
+        /* 背景纹理 */
+        .bg-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #8B0000 100%);
+            z-index: 1;
+        }
+        .bg-paper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 2;
+        }
+        .page-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+        }
+        /* 祥云装饰 */
+        .cloud-decoration {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            opacity: 0.15;
+            z-index: 3;
+        }
+        .cloud-top-left {
+            top: 20px;
+            left: -50px;
+            transform: rotate(180deg);
+        }
+        .cloud-top-right {
+            top: 20px;
+            right: -50px;
+            transform: scaleX(-1) rotate(180deg);
+        }
+        .cloud-bottom-left {
+            bottom: 20px;
+            left: -50px;
+        }
+        .cloud-bottom-right {
+            bottom: 20px;
+            right: -50px;
+            transform: scaleX(-1);
+        }
+        /* 第1页：封面 */
+        .page-cover .xi-character {
+            font-size: 180px;
+            color: #FFD700;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.5),
+                2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 30px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 20px rgba(255, 215, 0, 0.5),
+                    2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            to {
+                text-shadow: 
+                    0 0 40px rgba(255, 215, 0, 0.8),
+                    0 0 60px rgba(255, 215, 0, 0.4),
+                    2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+        }
+        .page-cover .names {
+            font-size: 32px;
+            color: #FFF8DC;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .page-cover .names .ampersand {
+            font-size: 24px;
+            margin: 0 15px;
+            color: #FFD700;
+        }
+        .page-cover .date {
+            font-size: 20px;
+            color: #FFE4B5;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .page-cover .lunar-date {
+            font-size: 16px;
+            color: #DEB887;
+            letter-spacing: 2px;
+        }
+        .page-cover .divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            margin: 30px 0;
+        }
+        .page-cover .subtitle {
+            font-size: 18px;
+            color: #FFE4B5;
+            letter-spacing: 6px;
+        }
+        /* 卷轴效果边框 */
+        .scroll-border {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            right: 20px;
+            bottom: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 5px;
+            z-index: 5;
+        }
+        .scroll-border::before,
+        .scroll-border::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: linear-gradient(180deg, #8B4513, #A0522D, #8B4513);
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .scroll-border::before {
+            top: -15px;
+        }
+        .scroll-border::after {
+            bottom: -15px;
+        }
+        /* 第2页：佳期 */
+        .page-date .title {
+            font-size: 36px;
+            color: #FFD700;
+            letter-spacing: 12px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .date-card {
+            background: rgba(255, 248, 220, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        .date-card .main-date {
+            font-size: 48px;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .date-card .main-date .year {
+            font-size: 24px;
+            color: #FFE4B5;
+            margin-right: 10px;
+        }
+        .date-card .weekday {
+            font-size: 18px;
+            color: #FFE4B5;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+        .date-card .lunar {
+            font-size: 16px;
+            color: #DEB887;
+            letter-spacing: 2px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .countdown-item {
+            text-align: center;
+        }
+        .countdown-number {
+            font-size: 36px;
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .countdown-label {
+            font-size: 14px;
+            color: #DEB887;
+            margin-top: 5px;
+        }
+        .schedule {
+            width: 100%;
+            max-width: 320px;
+        }
+        .schedule-title {
+            font-size: 20px;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .schedule-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .schedule-item::after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 100%;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(180deg, #FFD700, transparent);
+        }
+        .schedule-item:last-child::after {
+            display: none;
+        }
+        .schedule-time {
+            font-size: 18px;
+            color: #FFD700;
+            margin-right: 20px;
+            min-width: 60px;
+        }
+        .schedule-event {
+            font-size: 16px;
+            color: #FFF8DC;
+        }
+        /* 第3页：敬邀 */
+        .page-location .title {
+            font-size: 36px;
+            color: #FFD700;
+            letter-spacing: 12px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .location-card {
+            background: rgba(255, 248, 220, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 340px;
+            backdrop-filter: blur(5px);
+        }
+        .hotel-name {
+            font-size: 24px;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .hotel-hall {
+            font-size: 18px;
+            color: #FFE4B5;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+        .location-divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            margin: 15px auto;
+        }
+        .address {
+            font-size: 16px;
+            color: #FFF8DC;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .nav-btn {
+            display: block;
+            width: 200px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #8B0000;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .nav-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+        }
+        .transport-tips {
+            width: 100%;
+            max-width: 340px;
+        }
+        .tips-title {
+            font-size: 18px;
+            color: #FFD700;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+        .tip-item {
+            font-size: 14px;
+            color: #DEB887;
+            line-height: 1.8;
+            padding-left: 15px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .tip-item::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-size: 10px;
+        }
+        /* 第4页：回执 */
+        .page-rsvp .title {
+            font-size: 36px;
+            color: #FFD700;
+            letter-spacing: 12px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .rsvp-form {
+            width: 100%;
+            max-width: 340px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            font-size: 16px;
+            color: #FFE4B5;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .form-input {
+            width: 100%;
+            height: 45px;
+            padding: 0 15px;
+            background: rgba(255, 248, 220, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #FFF8DC;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .form-input::placeholder {
+            color: rgba(222, 184, 135, 0.6);
+        }
+        .radio-group {
+            display: flex;
+            gap: 10px;
+        }
+        .radio-item {
+            flex: 1;
+            position: relative;
+        }
+        .radio-item input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .radio-label {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            background: rgba(255, 248, 220, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #DEB887;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .radio-item input:checked + .radio-label {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #FFD700;
+            color: #FFD700;
+        }
+        .form-textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px 15px;
+            background: rgba(255, 248, 220, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #FFF8DC;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            resize: none;
+            transition: all 0.3s ease;
+        }
+        .form-textarea:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .form-textarea::placeholder {
+            color: rgba(222, 184, 135, 0.6);
+        }
+        .submit-btn {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border: none;
+            border-radius: 25px;
+            color: #8B0000;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .submit-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .success-icon {
+            font-size: 60px;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        .success-text {
+            font-size: 20px;
+            color: #FFD700;
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+        }
+        .success-subtext {
+            font-size: 14px;
+            color: #DEB887;
+        }
+        /* 第5页：封底 */
+        .page-footer .greeting {
+            font-size: 32px;
+            color: #FFD700;
+            letter-spacing: 12px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            height: 300px;
+        }
+        .page-footer .divider {
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(180deg, transparent, #FFD700, transparent);
+            margin: 30px 0;
+        }
+        .page-footer .names-footer {
+            font-size: 24px;
+            color: #FFF8DC;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+        }
+        .page-footer .date-footer {
+            font-size: 16px;
+            color: #DEB887;
+            letter-spacing: 4px;
+        }
+        .page-footer .thank-you {
+            position: absolute;
+            bottom: 60px;
+            font-size: 14px;
+            color: rgba(222, 184, 135, 0.8);
+            letter-spacing: 4px;
+        }
+        /* 翻页提示 */
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            animation: bounce 2s infinite;
+        }
+        .scroll-hint svg {
+            width: 30px;
+            height: 30px;
+            fill: rgba(255, 215, 0, 0.6);
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        /* 页码指示器 */
+        .page-indicator {
+            position: fixed;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .indicator-dot.active {
+            background: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            transform: scale(1.2);
+        }
+        /* 音乐播放按钮 */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            z-index: 100;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .music-btn.playing {
+            animation: rotate 3s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .music-btn svg {
+            width: 100%;
+            height: 100%;
+            fill: #FFD700;
+        }
+        /* 水墨山水装饰 */
+        .ink-mountain {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            opacity: 0.1;
+            z-index: 3;
+        }
+        /* 响应式调整 */
+        @media (max-width: 375px) {
+            .page-cover .xi-character {
+                font-size: 150px;
+            }
+            .page-cover .names {
+                font-size: 28px;
+            }
+            .page-date .title,
+            .page-location .title,
+            .page-rsvp .title {
+                font-size: 30px;
+            }
+        }
+        /* 加载动画 */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #8B0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-xi {
+            font-size: 80px;
+            color: #FFD700;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载页 -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-xi">囍</div>
+    </div>
+    <!-- 音乐按钮 -->
+    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+    </div>
+    <!-- 页码指示器 -->
+    <div class="page-indicator" id="pageIndicator">
+        <div class="indicator-dot active"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+    </div>
+    <div class="swiper-container" id="swiperContainer">
+        <!-- 第1页：封面 -->
+        <div class="swiper-page page-cover active" data-page="0">
+            <div class="bg-texture"></div>
+            <div class="bg-paper"></div>
+            <!-- 祥云装饰 -->
+            <svg class="cloud-decoration cloud-top-left" viewBox="0 0 200 100">
+                <path d="M20,80 Q30,60 50,70 Q60,50 80,60 Q90,40 110,50 Q120,30 140,40 Q150,20 170,30 Q180,10 200,20 L200,100 L0,100 L0,80 Z" fill="#FFD700"/>
+            </svg>
+            <svg class="cloud-decoration cloud-top-right" viewBox="0 0 200 100">
+                <path d="M20,80 Q30,60 50,70 Q60,50 80,60 Q90,40 110,50 Q120,30 140,40 Q150,20 170,30 Q180,10 200,20 L200,100 L0,100 L0,80 Z" fill="#FFD700"/>
+            </svg>
+            <svg class="cloud-decoration cloud-bottom-left" viewBox="0 0 200 100">
+                <path d="M20,80 Q30,60 50,70 Q60,50 80,60 Q90,40 110,50 Q120,30 140,40 Q150,20 170,30 Q180,10 200,20 L200,100 L0,100 L0,80 Z" fill="#FFD700"/>
+            </svg>
+            <svg class="cloud-decoration cloud-bottom-right" viewBox="0 0 200 100">
+                <path d="M20,80 Q30,60 50,70 Q60,50 80,60 Q90,40 110,50 Q120,30 140,40 Q150,20 170,30 Q180,10 200,20 L200,100 L0,100 L0,80 Z" fill="#FFD700"/>
+            </svg>
+            <div class="scroll-border"></div>
+            <div class="page-content">
+                <div class="xi-character">囍</div>
+                <div class="divider"></div>
+                <div class="names">
+                    韦文涛<span class="ampersand">&</span>唐秋桓
+                </div>
+                <div class="date">2026年9月26日</div>
+                <div class="lunar-date">农历丙午年八月十五</div>
+                <div class="divider"></div>
+                <div class="subtitle">谨 邀 您 见 证 我 们 的 幸 福</div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </div>
+        </div>
+        <!-- 第2页：佳期 -->
+        <div class="swiper-page page-date" data-page="1">
+            <div class="bg-texture"></div>
+            <div class="bg-paper"></div>
+            <!-- 水墨山水 -->
+            <svg class="ink-mountain" viewBox="0 0 400 200" preserveAspectRatio="none">
+                <path d="M0,200 L0,150 Q50,100 100,130 Q150,80 200,110 Q250,60 300,100 Q350,70 400,90 L400,200 Z" fill="#000"/>
+                <path d="M0,200 L0,170 Q80,140 150,160 Q220,130 300,150 Q350,140 400,155 L400,200 Z" fill="#000" opacity="0.5"/>
+            </svg>
+            <div class="page-content">
+                <div class="title">佳 期</div>
+                <div class="date-card">
+                    <div class="main-date">
+                        <span class="year">2026</span>09.26
+                    </div>
+                    <div class="weekday">星 期 六</div>
+                    <div class="lunar">农历丙午年八月十五</div>
+                </div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">--</div>
+                        <div class="countdown-label">天</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">--</div>
+                        <div class="countdown-label">时</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">--</div>
+                        <div class="countdown-label">分</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">--</div>
+                        <div class="countdown-label">秒</div>
+                    </div>
+                </div>
+                <div class="schedule">
+                    <div class="schedule-title">婚 礼 流 程</div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">10:00</span>
+                        <span class="schedule-event">迎宾签到</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">11:30</span>
+                        <span class="schedule-event">婚礼仪式</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">12:00</span>
+                        <span class="schedule-event">喜宴开席</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">14:00</span>
+                        <span class="schedule-event">合影留念</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </div>
+        </div>
+        <!-- 第3页：敬邀 -->
+        <div class="swiper-page page-location" data-page="2">
+            <div class="bg-texture"></div>
+            <div class="bg-paper"></div>
+            <div class="page-content">
+                <div class="title">敬 邀</div>
+                <div class="location-card">
+                    <div class="hotel-name">港宸国际大酒店</div>
+                    <div class="hotel-hall">金 花 茶 厅</div>
+                    <div class="location-divider"></div>
+                    <div class="address">
+                        防城港市港口区<br>
+                        北部湾大道1号
+                    </div>
+                    <a href="https://uri.amap.com/marker?position=108.3521,21.6878&name=港宸国际大酒店&src=webapp" class="nav-btn" target="_blank">
+                        一 键 导 航
+                    </a>
+                </div>
+                <div class="transport-tips">
+                    <div class="tips-title">交 通 指 引</div>
+                    <div class="tip-item">自驾：酒店设有免费停车场，导航搜索"港宸国际大酒店"</div>
+                    <div class="tip-item">公交：可乘坐3路、6路至"港口区政府"站下车</div>
+                    <div class="tip-item">外地宾客：防城港北站打车约15分钟可达</div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </div>
+        </div>
+        <!-- 第4页：回执 -->
+        <div class="swiper-page page-rsvp" data-page="3">
+            <div class="bg-texture"></div>
+            <div class="bg-paper"></div>
+            <div class="page-content">
+                <div class="title">回 执</div>
+                <form class="rsvp-form" id="rsvpForm" onsubmit="submitRSVP(event)">
+                    <div class="form-group">
+                        <label class="form-label">您的姓名</label>
+                        <input type="text" class="form-input" id="guestName" placeholder="请输入您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">是否出席</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="attendance" value="确定出席" id="attendYes" checked>
+                                <label class="radio-label" for="attendYes">确定出席</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="attendance" value="待定" id="attendMaybe">
+                                <label class="radio-label" for="attendMaybe">待定</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="attendance" value="无法出席" id="attendNo">
+                                <label class="radio-label" for="attendNo">无法出席</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">携带人数</label>
+                        <input type="number" class="form-input" id="guestCount" placeholder="包括您在内的总人数" min="1" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">祝福语（选填）</label>
+                        <textarea class="form-textarea" id="blessing" placeholder="写下您对新人的祝福..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        提 交
+                    </button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">❤</div>
+                    <div class="success-text">感谢您的祝福</div>
+                    <div class="success-subtext">我们期待与您相见</div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </div>
+        </div>
+        <!-- 第5页：封底 -->
+        <div class="swiper-page page-footer" data-page="4">
+            <div class="bg-texture"></div>
+            <div class="bg-paper"></div>
+            <!-- 祥云装饰 -->
+            <svg class="cloud-decoration cloud-top-left" viewBox="0 0 200 100">
+                <path d="M20,80 Q30,60 50,70 Q60,50 80,60 Q90,40 110,50 Q120,30 140,40 Q150,20 170,30 Q180,10 200,20 L200,100 L0,100 L0,80 Z" fill="#FFD700"/>
+            </svg>
+            <svg class="cloud-decoration cloud-top-right" viewBox="0 0 200 100">
+                <path d="M20,80 Q30,60 50,70 Q60,50 80,60 Q90,40 110,50 Q120,30 140,40 Q150,20 170,30 Q180,10 200,20 L200,100 L0,100 L0,80 Z" fill="#FFD700"/>
+            </svg>
+            <div class="scroll-border"></div>
+            <div class="page-content">
+                <div class="greeting">恭候光临 静候佳客</div>
+                <div class="divider"></div>
+                <div class="names-footer">韦文涛 & 唐秋桓</div>
+                <div class="date-footer">2026年9月26日</div>
+                <div class="thank-you">— 感谢您的到来 —</div>
+            </div>
+        </div>
+    </div>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="https://music.163.com/song/media/outer/url?id=1816941794.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        // 页面切换相关
+        let currentPage = 0;
+        const totalPages = 5;
+        let isAnimating = false;
+        let startY = 0;
+        let startX = 0;
+        // 初始化
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 1500);
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+        // 触摸事件
+        document.addEventListener('touchstart', function(e) {
+            startY = e.touches[0].clientY;
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+        document.addEventListener('touchend', function(e) {
+            if (isAnimating) return;
+            const endY = e.changedTouches[0].clientY;
+            const endX = e.changedTouches[0].clientX;
+            const diffY = startY - endY;
+            const diffX = startX - endX;
+            // 主要判断垂直滑动
+            if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
+                if (diffY > 0) {
+                    nextPage();
+                } else {
+                    prevPage();
+                }
+            }
+        }, { passive: true });
+        // 鼠标滚轮事件（桌面端）
+        let wheelTimeout;
+        document.addEventListener('wheel', function(e) {
+            if (isAnimating) return;
+            clearTimeout(wheelTimeout);
+            wheelTimeout = setTimeout(() => {
+                if (e.deltaY > 50) {
+                    nextPage();
+                } else if (e.deltaY < -50) {
+                    prevPage();
+                }
+            }, 50);
+        }, { passive: true });
+        function nextPage() {
+            if (currentPage >= totalPages - 1 || isAnimating) return;
+            isAnimating = true;
+            const pages = document.querySelectorAll('.swiper-page');
+            pages[currentPage].classList.remove('active');
+            pages[currentPage].classList.add('prev');
+            currentPage++;
+            pages[currentPage].classList.add('active');
+            updateIndicator();
+            setTimeout(() => {
+                pages[currentPage - 1].classList.remove('prev');
+                isAnimating = false;
+            }, 800);
+        }
+        function prevPage() {
+            if (currentPage <= 0 || isAnimating) return;
+            isAnimating = true;
+            const pages = document.querySelectorAll('.swiper-page');
+            pages[currentPage].classList.remove('active');
+            currentPage--;
+            pages[currentPage].classList.remove('prev');
+            pages[currentPage].classList.add('active');
+            updateIndicator();
+            setTimeout(() => {
+                isAnimating = false;
+            }, 800);
+        }
+        function updateIndicator() {
+            const dots = document.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentPage) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        // 倒计时
+        function updateCountdown() {
+            const weddingDate = new Date('2026-09-26T12:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+        // 音乐控制
+        let isPlaying = false;
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+            } else {
+                bgMusic.play().catch(e => {
+                    console.log('音频播放需要用户交互');
+                });
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+        // 尝试自动播放音乐（需要用户交互后才能播放）
+        document.addEventListener('touchstart', function initAudio() {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    musicBtn.classList.add('playing');
+                    isPlaying = true;
+                }).catch(e => {
+                    // 忽略错误，等待用户点击音乐按钮
+                });
+            }
+            document.removeEventListener('touchstart', initAudio);
+        }, { once: true, passive: true });
+        // 表单提交 - PushPlus微信推送（图片方式，避免跨域）
+        function submitRSVP(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '提交中...';
+            const name = document.getElementById('guestName').value;
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            const count = document.getElementById('guestCount').value;
+            const blessing = document.getElementById('blessing').value || '无';
+            // 组装微信消息
+            const title = '💒 婚礼回执 - ' + name;
+            const content = `
+👤 姓名：${name}
+✅ 是否出席：${attendance}
+👥 携带人数：${count}人
+💝 祝福语：${blessing}
+            `.trim();
+            // PushPlus微信推送（用图片方式，避免跨域问题）
+            const token = 'bf50d6ff7112411bbb9e8dd398c1e181';
+            const url = 'https://www.pushplus.plus/send?token=' + token 
+                + '&title=' + encodeURIComponent(title) 
+                + '&content=' + encodeURIComponent(content);
+            // 创建图片对象发送请求（不受跨域限制）
+            const img = new Image();
+            img.onload = function() {
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            };
+            img.onerror = function() {
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            };
+            img.src = url;
+            // 兜底：1秒后强制显示成功页面
+            setTimeout(() => {
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }, 1000);
+        }
+        // 键盘导航（桌面端）
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextPage();
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevPage();
+            }
+        });
+    </script>
+</body>
+</html>
